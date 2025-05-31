@@ -1,3 +1,31 @@
+{{--
+<x-guest-layout>
+    <div class="mb-4 text-sm text-gray-600">
+        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+    </div>
+
+    <!-- Session Status -->
+    <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <form method="POST" action="{{ route('password.email') }}">
+        @csrf
+
+        <!-- Email Address -->
+        <div>
+            <x-input-label for="email" :value="__('Email')" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        </div>
+
+        <div class="flex items-center justify-end mt-4">
+            <x-primary-button>
+                {{ __('Email Password Reset Link') }}
+            </x-primary-button>
+        </div>
+    </form>
+</x-guest-layout>
+--}}
+
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -37,48 +65,32 @@
             </div>
 
             <div class="card card-primary">
-              <div class="card-header"><h4>Acesso Administrativo</h4></div>
-
+              <div class="card-header"><h4>Recuperar Acesso Administrativo</h4></div>
+                <br>
+                @if (session('status'))
+                    <p class="alert alert-warning">
+                        Acesse seu email e clique no link para recuperar acesso.
+                    </p>
+                @endif
               <div class="card-body">
-                <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
+                <form method="POST" action="{{ route('password.email') }}" class="needs-validation" novalidate="">
                   @csrf
                     <div class="form-group">
                     <input id="email" type="email" class="form-control" name="email" placeholder="E-mail" tabindex="1" value="{{ old('email') }}" required autofocus>
-                    @if ($errors->has('email'))
+                    @if ($errors->get('email'))
                         <code>{{ $errors->first('email') }}</code>
                     @endif
                   </div>
 
-                  <div class="form-group">
-                    <div class="d-block">
 
-                      <div class="float-right">
-                        @if (Route::has('admin.forgot'))
-                            <a href="{{ route('admin.forgot') }}" class="text-small">
-                            Esqueceu a senha?
-                            </a>
-                        @endif
-                      </div>
-
-                    </div>
-                    <input id="password" type="password" class="form-control" name="password" placeholder="Senha" tabindex="2" value="{{ old('password') }}" required>
-                    @if ($errors->has('password'))
-                        <code>{{ $errors->first('password') }}</code>
-                    @endif
-                  </div>
-
-                  <div class="form-group">
-                    <div class="custom-control custom-checkbox">
-                      <input type="checkbox" name="remember" class="custom-control-input" tabindex="3" id="remember-me">
-                      <label class="custom-control-label" for="remember-me">Lembre-me</label>
-                    </div>
-                  </div>
 
                   <div class="form-group">
                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4" style="background:#0040e0ff ; color: #fff">
-                      Entrar
+                      Enviar link de recuperação
                     </button>
                   </div>
+                  <p style="text-align: center;">
+                    <a href="{{ route('admin.login') }}" title="Voltar para o login">Voltar para Login</a></p>
                 </form>
               </div>
             </div>
