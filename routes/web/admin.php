@@ -11,8 +11,10 @@ Route::get('admin/dashboard', [AdminController::class, 'dashboard'])
 
 //rota perfil admin
 Route::get('admin/profile', [ProfileController::class, 'index'])
+->middleware(['auth', 'admin'])
 ->name('admin.profile');
 
 //rota editar perfil admin
 Route::post('admin/profile/update', [ProfileController::class, 'update'])
+->middleware(['auth', 'admin'])
 ->name('admin.profile.update');

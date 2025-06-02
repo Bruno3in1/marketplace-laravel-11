@@ -1,0 +1,47 @@
+[33mcommit e52109b91c93710cc1f3360d68bcd21bdd2ab546[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m
+Author: unknown <bruno@3in1.com.br>
+Date:   Sun Jun 1 11:07:19 2025 -0300
+
+    feat: View para editar perfil do administrador
+
+[33mcommit 194d61f12f6d1c74021af0f768c7f03f4b75f00c[m
+Author: unknown <bruno@3in1.com.br>
+Date:   Sat May 31 17:35:10 2025 -0300
+
+    feat: Tela recuperar senha admin
+
+[33mcommit 52a0c5682b58aa35dfb5cf44507bc72ab7b1f64f[m
+Author: unknown <bruno@3in1.com.br>
+Date:   Sat May 31 16:18:58 2025 -0300
+
+    feat: Tela de login admin
+
+[33mcommit b5bbd779b7b0f51aa3017fd76d21def37c14776a[m[33m ([m[1;31morigin/main[m[33m)[m
+Author: unknown <bruno@3in1.com.br>
+Date:   Thu May 29 08:10:46 2025 -0300
+
+    feat: Dashboard Admin
+
+[33mcommit f4a48d199b395a7773429a5c134ebe0709c2bfb1[m
+Author: unknown <bruno@3in1.com.br>
+Date:   Wed May 28 22:34:58 2025 -0300
+
+    feat: Organização das rotas em arquivos separados
+
+[33mcommit ef0370517994a140c66244d288e193302f5f7c9d[m
+Author: unknown <bruno@3in1.com.br>
+Date:   Wed May 28 05:38:12 2025 -0300
+
+    feat: Seede para login inicial com cada perfil
+
+[33mcommit 5584af3a1041014ed5f91240097bdd4d4ae0fb65[m
+Author: unknown <bruno@3in1.com.br>
+Date:   Tue May 27 22:24:13 2025 -0300
+
+    feat: Breeze para login
+
+[33mcommit f007ac6304a7017c828b1e7668471c5c31cfaed0[m
+Author: unknown <bruno@3in1.com.br>
+Date:   Tue May 27 21:50:39 2025 -0300
+
+    first commit
