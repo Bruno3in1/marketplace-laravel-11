@@ -17,11 +17,12 @@
                   <div class="card-header">
                     <h4>Slide Destaque</h4>
                     <div class="card-header-action">
-                        <a href="{{ route('slider.create') }}" class="btn btn-primary">Novo</a>
+                        <a href="{{ route('slider.create') }}" class="btn btn-primary"><i class="fas fa-plus"></i> Novo</a>
                     </div>
 
                   </div>
                   <div class="card-body">
+                    {{ $dataTable->table() }}
                   </div>
                 </div>
               </div>
@@ -29,3 +30,7 @@
           </div>
         </section>
 @endsection
+
+@push('scripts')
+{{ $dataTable->scripts(attributes: ['type' => 'module']) }}
+@endpush

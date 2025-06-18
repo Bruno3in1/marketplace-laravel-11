@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Backend;
 
+use App\DataTables\SliderDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use App\Traits\uploadImageTrait;
 use Illuminate\Http\Request;
+
+use function Termwind\render;
 
 class SliderController extends Controller
 {
@@ -13,9 +16,10 @@ class SliderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(SliderDataTable $dataTable)
     {
-        return view('admin/slider/index');
+        //return view('admin/slider/index');
+        return $dataTable->render('admin/slider/index');
     }
 
     /**
@@ -72,7 +76,8 @@ class SliderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $slider = Slider::findOrFail($id);
+        return view('admin/slider/edit', compact('slider'));
     }
 
     /**
@@ -80,7 +85,32 @@ class SliderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //dd($request->all());
+        $request->validate([
+            'banner' => ['nullable', 'image', 'max:2048'],
+            'title_one' => ['string', 'max:200'],
+            'title_two' => ['required', 'max:200'],
+            'starting_price' => ['max:20'],
+            'link' => ['url'],
+            'serial' => ['required', 'integer'],
+            'status' => ['required'],
+        ]);
+
+        $slider = Slider::findOrFail($id);
+
+        $imagePath = $this->updateImage($request, 'banner', 'uploads', $slider->banner);
+
+        $slider->banner = empty(!$imagePath) ? $imagePath : $slider->banner;
+        $slider->title_one = $request->title_one;
+        $slider->title_two = $request->title_two;
+        $slider->starting_price = $request->starting_price;
+        $slider->link = $request->link;
+        $slider->serial = $request->serial;
+        $slider->status = $request->status;
+        $slider->save();
+
+        toastr()->success('Atualizado com sucesso!');
+        return redirect()->route('slider.index');
     }
 
     /**
